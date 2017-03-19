@@ -34,6 +34,8 @@ namespace SimpleHmi.PlcService
             _timer = new System.Timers.Timer();
             _timer.Elapsed += OnTimerElapsed;
             _timer.Interval = 100;
+            InletPumpSpeed = 3;
+            OutletPumpSpeed = 2;
         }
 
         private void OnTimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
