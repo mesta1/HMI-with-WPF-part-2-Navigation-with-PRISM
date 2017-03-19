@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SimpleHmi.PlcService
@@ -62,6 +63,8 @@ namespace SimpleHmi.PlcService
 
         public void Connect(string ipAddress, int rack, int slot)
         {
+            ConnectionState = ConnectionStates.Connecting;
+            OnValuesRefreshed();
             ConnectionState = ConnectionStates.Online;
             _timer.Start();
         }
@@ -69,6 +72,7 @@ namespace SimpleHmi.PlcService
         public void Disconnect()
         {
             ConnectionState = ConnectionStates.Offline;
+            OnValuesRefreshed();
             _timer.Stop();
         }
 

@@ -30,6 +30,7 @@ namespace SimpleHmi.ViewModels
         {
             _plcService = plcService;
             _plcService.ValuesRefreshed += OnPlcServiceValuesRefreshed;
+            OnPlcServiceValuesRefreshed(null, EventArgs.Empty);
         }
 
         private void OnPlcServiceValuesRefreshed(object sender, EventArgs e)
